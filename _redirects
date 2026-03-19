@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+# Redirect www to non-www
+https://www.tsai4c.com/* https://tsai4c.com/:splat 301!
+
+# SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
