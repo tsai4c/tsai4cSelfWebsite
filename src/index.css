@@ -987,6 +987,14 @@ mark {
 }
 
 @media (max-width: 767px) {
+  .navbar {
+    display: none;
+  }
+  
+  .page {
+    padding-top: 0;
+  }
+  
   .navbar-content {
     padding: 0.8rem 1rem;
     height: 60px;
@@ -997,7 +1005,7 @@ mark {
   }
   
   .hero {
-    min-height: calc(100vh - 60px);
+    min-height: 100vh;
     padding: 1.5rem 0;
   }
   
