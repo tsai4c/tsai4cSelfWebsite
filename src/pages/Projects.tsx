@@ -63,24 +63,16 @@ const Projects: React.FC = () => {
                   <div className="particle"></div>
                   <div className="particle"></div>
                 </div>
-                <h3>Ocean VR Experience</h3>
-                <p>Developing virtual reality ocean exploration experiences to help the public understand the Kuroshio Current immersively</p>
+                <h3>Kuroshio Large Meander Prediction</h3>
+                <p>Developing advanced prediction models to forecast Kuroshio Large Meander phenomena, helping marine industries and coastal communities prepare for oceanographic changes</p>
               </div>
               <div className="future-item ocean-card liquid-glass">
                 <div className="floating-particles">
                   <div className="particle"></div>
                   <div className="particle"></div>
                 </div>
-                <h3>AI Ocean Prediction</h3>
-                <p>Integrating more AI technologies to improve the accuracy of marine environment change predictions</p>
-              </div>
-              <div className="future-item ocean-card liquid-glass">
-                <div className="floating-particles">
-                  <div className="particle"></div>
-                  <div className="particle"></div>
-                </div>
-                <h3>Open Source Toolkit</h3>
-                <p>Making research tools open source to promote development of the marine science research community</p>
+                <h3>Kuroshio Generation Website</h3>
+                <p>Creating a comprehensive web platform dedicated to Kuroshio Current power generation research, featuring interactive visualizations and real-time data analysis tools</p>
               </div>
             </div>
           </motion.div>
