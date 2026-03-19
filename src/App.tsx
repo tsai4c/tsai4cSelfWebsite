@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
+import MobileMenu from './components/MobileMenu'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -19,6 +20,7 @@ const AppContent: React.FC = () => {
   return (
     <div className="App">
       <Navbar />
+      <MobileMenu />
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
