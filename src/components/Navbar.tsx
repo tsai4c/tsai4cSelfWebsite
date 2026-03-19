@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, Search } from 'lucide-react'
-import ThemeToggle from './ThemeToggle'
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -110,8 +109,6 @@ const Navbar: React.FC = () => {
 
             {/* Search and Mobile Menu */}
             <div className="nav-actions">
-              <ThemeToggle />
-              
               <motion.button
                 className="search-button"
                 onClick={() => setShowSearch(!showSearch)}
@@ -185,65 +182,85 @@ const Navbar: React.FC = () => {
             
             {/* Mobile Menu */}
             <motion.div
-              className="mobile-nav"
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
+              className="mobile-nav-panel"
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
               transition={{ 
                 duration: 0.3, 
-                ease: 'easeInOut' 
+                ease: [0.4, 0.0, 0.2, 1] 
               }}
             >
-              <div className="mobile-nav-header">
-                <span className="mobile-nav-title">Menu</span>
-                <button 
-                  className="mobile-nav-close"
-                  onClick={closeMobileMenu}
-                  aria-label="Close menu"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-              
-              <ul className="mobile-nav-links">
-                {navItems.map((item, index) => (
-                  <motion.li 
-                    key={item.to}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
+              {/* Navigation Links */}
+              <div className="mobile-nav-content">
+                <div className="mobile-nav-header">
+                  <span className="mobile-nav-title">Navigation</span>
+                  <button 
+                    className="mobile-nav-close"
+                    onClick={closeMobileMenu}
+                    aria-label="Close menu"
                   >
-                    <Link 
-                      to={item.to} 
-                      onClick={closeMobileMenu} 
-                      className={location.pathname === item.to ? 'active' : ''}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-
-              {/* Mobile Search */}
-              <motion.div 
-                className="mobile-search"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <form onSubmit={handleSearch} className="mobile-search-form">
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchQuery}
-                    onChange={handleSearchInputChange}
-                    className="mobile-search-input"
-                  />
-                  <button type="submit" className="mobile-search-btn">
-                    <Search size={20} />
+                    <X size={20} />
                   </button>
-                </form>
-              </motion.div>
+                </div>
+                
+                <nav className="mobile-nav-links">
+                  {navItems.map((item, index) => (
+                    <motion.div
+                      key={item.to}
+                      className="mobile-nav-item"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.08 + 0.15 }}
+                    >
+                      <Link 
+                        to={item.to} 
+                        onClick={closeMobileMenu} 
+                        className={`mobile-nav-link ${location.pathname === item.to ? 'active' : ''}`}
+                      >
+                        <span className="nav-link-text">{item.label}</span>
+                        {location.pathname === item.to && (
+                          <motion.div 
+                            className="nav-link-indicator"
+                            layoutId="mobile-nav-indicator"
+                          />
+                        )}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </nav>
+
+                {/* Mobile Search */}
+                <motion.div 
+                  className="mobile-search-section"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <div className="mobile-search-label">Quick Search</div>
+                  <form onSubmit={handleSearch} className="mobile-search-form">
+                    <div className="mobile-search-wrapper">
+                      <Search size={18} className="mobile-search-icon" />
+                      <input
+                        type="text"
+                        placeholder="Search content..."
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                        className="mobile-search-input"
+                      />
+                      {searchQuery && (
+                        <button 
+                          type="button" 
+                          className="mobile-search-clear"
+                          onClick={() => setSearchQuery('')}
+                        >
+                          <X size={16} />
+                        </button>
+                      )}
+                    </div>
+                  </form>
+                </motion.div>
+              </div>
             </motion.div>
           </>
         )}
