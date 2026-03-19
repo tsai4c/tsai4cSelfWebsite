@@ -62,7 +62,7 @@ const Research: React.FC = () => {
   ]
 
   return (
-    <section id="research" className="section" style={{ background: 'var(--bg)' }}>
+    <section id="research" className="section">
       <motion.div
         className="container"
         variants={containerVariants}

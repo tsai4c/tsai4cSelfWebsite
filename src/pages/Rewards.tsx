@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Award, Trophy, Medal, Star, Calendar, MapPin } from 'lucide-react'
 
-const Awards: React.FC = () => {
+const Rewards: React.FC = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -231,4 +231,4 @@ const Awards: React.FC = () => {
   )
 }
 
-export default Awards
+export default Rewards

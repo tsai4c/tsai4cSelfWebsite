@@ -74,7 +74,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Academic Background Section */}
-      <section className="section" style={{ background: 'var(--bg)' }}>
+      <section className="section">
         <motion.div
           className="container"
           variants={containerVariants}
@@ -116,7 +116,7 @@ const About: React.FC = () => {
         </motion.div>
       </section>
 
-      <section className="section" style={{ background: 'var(--bg)' }}>
+      <section className="section">
         <motion.div
           className="container"
           variants={containerVariants}

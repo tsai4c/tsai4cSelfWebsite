@@ -93,7 +93,7 @@ const Projects: React.FC = () => {
   }
 
   return (
-    <section id="projects" className="section" style={{ background: 'var(--ocean-light)' }}>
+    <section id="projects" className="section">
       <motion.div
         className="container"
         variants={containerVariants}
