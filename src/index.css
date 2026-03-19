@@ -1063,14 +1063,18 @@ mark {
   top: 1.5rem;
   right: 1.5rem;
   z-index: 1003;
-  background: var(--ocean-primary);
-  color: white;
-  border: none;
-  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  color: var(--ocean-primary);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
   padding: 1rem;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(30, 64, 175, 0.4);
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 32px rgba(30, 64, 175, 0.1),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 56px;
   height: 56px;
   align-items: center;
@@ -1078,9 +1082,23 @@ mark {
 }
 
 .mobile-menu-trigger:hover {
-  background: var(--ocean-secondary);
-  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.5);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px);
+  color: var(--ocean-secondary);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 12px 48px rgba(30, 64, 175, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.mobile-menu-trigger:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    0 4px 20px rgba(30, 64, 175, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Mobile Menu Dropdown */
