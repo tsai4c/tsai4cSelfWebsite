@@ -1065,6 +1065,132 @@ mark {
   font-style: normal;
 }
 
+/* Motto Section Styles */
+.motto-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.motto-content {
+  padding: 3rem 2rem;
+  position: relative;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+}
+
+.japanese-motto {
+  color: var(--text-primary);
+}
+
+.motto-japanese {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: serif;
+  
+  /* Liquid glass text effect */
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.4) 25%,
+    rgba(0, 123, 191, 0.6) 50%,
+    rgba(255, 255, 255, 0.3) 75%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Glass reflection effect */
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(0, 123, 191, 0.3),
+    0 0 30px rgba(255, 255, 255, 0.2);
+  
+  /* Additional glass effects */
+  filter: drop-shadow(0 4px 6px rgba(0, 123, 191, 0.1));
+  
+  /* Animation for shimmer effect */
+  background-size: 200% 200%;
+  animation: glassShimmer 3s ease-in-out infinite;
+}
+
+@keyframes glassShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.motto-reading {
+  font-size: 1.2rem;
+  color: var(--ocean-secondary);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.motto-meaning {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 123, 191, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 123, 191, 0.2);
+}
+
+.motto-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-motto {
+  font-size: 1rem;
+  text-align: center;
+  margin: 0.5rem 0 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .motto-japanese {
+    font-size: 2.2rem;
+    /* Keep all the glass effects for mobile */
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.4) 25%,
+      rgba(0, 123, 191, 0.6) 50%,
+      rgba(255, 255, 255, 0.3) 75%,
+      rgba(255, 255, 255, 0.8) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+  }
+  
+  .motto-reading {
+    font-size: 1rem;
+  }
+  
+  .motto-meaning {
+    font-size: 1.2rem;
+  }
+  
+  .motto-description {
+    font-size: 1rem;
+  }
+  
+  .motto-content {
+    padding: 2rem 1.5rem;
+  }
+}
+
 /* Mobile Responsive */
 @media (max-width: 767px) {
   .research-grid {
@@ -1099,6 +1225,22 @@ mark {
   
   .research-philosophy .philosophy-content {
     padding: 2rem 1.5rem;
+  }
+  
+  .motto-japanese {
+    font-size: 2rem;
+  }
+  
+  .motto-reading {
+    font-size: 0.9rem;
+  }
+  
+  .motto-meaning {
+    font-size: 1.1rem;
+  }
+  
+  .motto-description {
+    font-size: 0.9rem;
   }
 }
 
@@ -1629,10 +1771,5 @@ mark {
   .philosophy-content {
     padding: 2rem 1.5rem;
     text-align: center;
-  }
-  
-  .philosophy-content blockquote {
-    font-size: 1.1rem;
-    line-height: 1.7;
   }
 }

@@ -47,6 +47,7 @@ const About: React.FC = () => {
             <motion.div variants={itemVariants} className="profile-info">
               <h1 className="profile-name">Shi-Xi Tsai</h1>
               <p className="profile-nickname">Charles</p>
+              <p className="profile-motto">You've got to find what you love.</p>
               
               <div className="social-links mobile-centered">
                 <a href="https://linkedin.com/in/tsai4c" target="_blank" rel="noopener noreferrer" className="social-link">
@@ -89,7 +90,7 @@ const About: React.FC = () => {
                 <GraduationCap className="academic-icon" />
                 <div>
                   <h4>Education</h4>
-                  <p>Marine Environment and Engineering</p>
+                  <p>Marine Environmental Informatics (Computer Science)</p>
                   <p>National Taiwan Ocean University</p>
                 </div>
               </div>
@@ -108,7 +109,6 @@ const About: React.FC = () => {
                 <div>
                   <h4>Position</h4>
                   <p>Research Assistant</p>
-                  <p>Marine Science Laboratory</p>
                 </div>
               </div>
             </div>
@@ -168,34 +168,6 @@ const About: React.FC = () => {
                   <li>Sustainable Ocean Development</li>
                 </ul>
               </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      <section className="section">
-        <motion.div
-          className="container"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.div variants={itemVariants} className="philosophy-section">
-            <h2>Research Philosophy</h2>
-            <div className="philosophy-content liquid-glass">
-              <div className="floating-particles">
-                <div className="particle"></div>
-                <div className="particle"></div>
-                <div className="particle"></div>
-              </div>
-              <blockquote>
-                "The ocean connects all life on Earth. By understanding its currents and changes, 
-                we can better protect our planet's future. Every data point collected, every 
-                pattern discovered, and every insight gained brings us closer to preserving 
-                the delicate balance of our marine ecosystems."
-              </blockquote>
-              <cite>- Shi-Xi Tsai</cite>
             </div>
           </motion.div>
         </motion.div>
