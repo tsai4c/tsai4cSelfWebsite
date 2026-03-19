@@ -33,12 +33,22 @@ const About: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           {/* Hero Profile Section */}
-          <div className="profile-hero">
+          <div className="profile-hero mobile-friendly">
+            <motion.div variants={itemVariants} className="profile-image-section mobile-priority">
+              <div className="profile-photo-container ocean-card liquid-glass">
+                <img 
+                  src="/profile-photo.png" 
+                  alt="Shi-Xi Tsai"
+                  className="profile-photo"
+                />
+              </div>
+            </motion.div>
+
             <motion.div variants={itemVariants} className="profile-info">
               <h1 className="profile-name">Shi-Xi Tsai</h1>
               <p className="profile-nickname">Charles</p>
               
-              <div className="social-links">
+              <div className="social-links mobile-centered">
                 <a href="https://linkedin.com/in/tsai4c" target="_blank" rel="noopener noreferrer" className="social-link">
                   <Linkedin size={24} />
                 </a>
@@ -53,21 +63,11 @@ const About: React.FC = () => {
                 </a>
               </div>
               
-              <p className="profile-description">
+              <p className="profile-description mobile-compact">
                 Marine Science Student & Research Assistant at National Taiwan Ocean University. 
                 Passionate about Kuroshio Current research, focusing on power generation potential 
                 and large meander phenomena affecting Taiwan's marine environment.
               </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="profile-image-section">
-              <div className="profile-photo-container ocean-card liquid-glass">
-                <img 
-                  src="/profile-photo.png" 
-                  alt="Shi-Xi Tsai"
-                  className="profile-photo"
-                />
-              </div>
             </motion.div>
           </div>
         </motion.div>
