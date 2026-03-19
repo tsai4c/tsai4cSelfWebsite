@@ -1293,19 +1293,32 @@ mark {
 /* Mobile About Page Optimizations */
 @media (max-width: 767px) {
   .profile-hero.mobile-friendly {
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     text-align: center;
     gap: 2rem;
+    width: 100%;
   }
   
   .profile-image-section.mobile-priority {
-    order: -1;
+    order: -1 !important;
     margin-bottom: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-info {
+    order: 1 !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .profile-photo-container {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     margin: 0 auto;
   }
   
