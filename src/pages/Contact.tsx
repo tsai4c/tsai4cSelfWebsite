@@ -62,9 +62,9 @@ const Contact: React.FC = () => {
     {
       icon: <Mail size={24} />,
       title: "Email",
-      content: "tsai4c@marine.ntou.edu.tw",
+      content: "tsai4c@gmail.com",
       description: "Feel free to reach out for collaboration or research discussions",
-      action: "mailto:tsai4c@marine.ntou.edu.tw"
+      action: "mailto:tsai4c@gmail.com"
     },
     {
       icon: <MapPin size={24} />,
@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
     {
       icon: <Phone size={24} />,
       title: "Phone",
-      content: "+886-xxx-xxx-xxx",
+      content: "+886-916-339-897",
       description: "Available during business hours",
       action: null
     },
@@ -86,29 +86,6 @@ const Contact: React.FC = () => {
       content: "Mon-Fri 9:00-17:00",
       description: "Taiwan Standard Time (GMT+8)",
       action: null
-    }
-  ]
-
-  const collaborationAreas = [
-    {
-      title: "Research Collaboration",
-      description: "Joint research projects on Kuroshio Current studies and marine environmental monitoring",
-      topics: ["Ocean Current Analysis", "Temperature Monitoring", "Data Visualization", "Environmental Impact"]
-    },
-    {
-      title: "Technical Development",
-      description: "Collaborative development of marine science research tools and data analysis systems",
-      topics: ["Web Applications", "Data Processing Tools", "Machine Learning Models", "API Development"]
-    },
-    {
-      title: "Academic Exchange",
-      description: "Academic discussions, conference participation, and knowledge sharing in marine science",
-      topics: ["Conference Presentations", "Paper Collaboration", "Peer Review", "Knowledge Sharing"]
-    },
-    {
-      title: "Educational Outreach",
-      description: "Marine science education and public outreach activities to promote ocean awareness",
-      topics: ["Science Communication", "Educational Content", "Public Lectures", "Community Engagement"]
     }
   ]
 
@@ -278,78 +255,6 @@ const Contact: React.FC = () => {
               </div>
             </motion.div>
           </div>
-        </motion.div>
-      </section>
-
-      <section className="section">
-        <motion.div
-          className="container"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.div variants={itemVariants} className="collaboration-section">
-            <h2>Collaboration Opportunities</h2>
-            <p className="collaboration-intro">
-              I'm always looking for opportunities to collaborate on meaningful projects 
-              that advance our understanding of marine ecosystems and contribute to ocean conservation.
-            </p>
-
-            <div className="collaboration-grid">
-              {collaborationAreas.map((area, index) => (
-                <motion.div
-                  key={index}
-                  className="collaboration-card ocean-card liquid-glass"
-                  variants={itemVariants}
-                  whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "rgba(30, 64, 175, 0.2) 0 25px 50px -12px"
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="floating-particles">
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                  </div>
-                  <h3>{area.title}</h3>
-                  <p>{area.description}</p>
-                  <div className="collaboration-topics">
-                    {area.topics.map((topic, tIndex) => (
-                      <span key={tIndex} className="topic-tag">
-                        {topic}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="response-info">
-            <div className="ocean-card liquid-glass response-card">
-              <div className="floating-particles">
-                <div className="particle"></div>
-                <div className="particle"></div>
-                <div className="particle"></div>
-              </div>
-              <h3>Response Time</h3>
-              <p>
-                I typically respond to emails within 24-48 hours during weekdays. 
-                For urgent research collaborations or time-sensitive matters, 
-                please indicate the urgency in your subject line.
-              </p>
-              <div className="response-tips">
-                <h4>Tips for Better Communication:</h4>
-                <ul>
-                  <li>Be specific about your research interests or collaboration goals</li>
-                  <li>Include relevant background information about your work</li>
-                  <li>Mention any specific timelines or deadlines</li>
-                  <li>Feel free to attach relevant papers or project descriptions</li>
-                </ul>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </section>
     </div>

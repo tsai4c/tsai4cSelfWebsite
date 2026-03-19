@@ -1773,3 +1773,144 @@ mark {
     text-align: center;
   }
 }
+
+/* Awards Page Styles */
+.awards-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.awards-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.awards-grid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.award-card {
+  padding: 2rem;
+  position: relative;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.award-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.award-icon {
+  color: var(--ocean-primary);
+  background: rgba(0, 123, 191, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.award-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.award-category {
+  background: var(--ocean-primary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.award-date {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.award-content {
+  text-align: left;
+}
+
+.award-title {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.award-subtitle {
+  font-size: 1.1rem;
+  color: var(--ocean-secondary);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.award-organization {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: rgba(0, 123, 191, 0.05);
+  border-radius: 8px;
+}
+
+.award-organization svg {
+  color: var(--ocean-primary);
+  margin-top: 0.2rem;
+}
+
+.org-chinese {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.org-english {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.award-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .award-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .award-meta {
+    text-align: center;
+  }
+  
+  .award-content {
+    text-align: center;
+  }
+  
+  .award-organization {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
