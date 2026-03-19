@@ -10,6 +10,7 @@ const MobileMenu: React.FC = () => {
   const location = useLocation()
 
   const navItems = [
+    { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
     { to: '/research', label: 'Research' },
     { to: '/projects', label: 'Projects' },
@@ -96,13 +97,6 @@ const MobileMenu: React.FC = () => {
             >
               <div className="mobile-menu-header">
                 <div className="mobile-menu-title">Navigation</div>
-                <button 
-                  className="mobile-menu-close"
-                  onClick={closeMenu}
-                  aria-label="Close menu"
-                >
-                  <X size={20} />
-                </button>
               </div>
               
               <nav className="mobile-menu-nav">
