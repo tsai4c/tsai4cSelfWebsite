@@ -61,6 +61,25 @@ const Awards: React.FC = () => {
         </motion.div>
       </section>
 
+      {/* Awards Hero Section */}
+      <section className="section">
+        <motion.div
+          className="container"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div variants={itemVariants} className="page-hero">
+            <h2>Effort Meets Recognition</h2>
+            <p>
+              The phrase "どりょくせいしゅう" (effort brings success) is reflected here through achievements that acknowledge persistence,
+              academic excellence, and dedication to oceanographic research in the face of complex challenges.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
       <section className="section">
         <motion.div
           className="container"

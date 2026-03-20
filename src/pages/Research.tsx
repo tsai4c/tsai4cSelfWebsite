@@ -93,6 +93,25 @@ const Research: React.FC = () => {
         </motion.div>
       </section>
 
+      {/* Research Hero Section */}
+      <section className="section">
+        <motion.div
+          className="container"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div variants={itemVariants} className="page-hero">
+            <h2>Resilience in Research</h2>
+            <p>
+              Inspired by the motto "ななころびやおき" (fall down seven times, get up eight), this section reflects the ongoing commitment to persistent,
+              adaptive research that navigates challenges and emerges stronger for the science of the Kuroshio Current.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
       {/* Ongoing Research Section */}
       <section className="section">
         <motion.div

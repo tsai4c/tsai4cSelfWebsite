@@ -47,6 +47,25 @@ const Projects: React.FC = () => {
         </motion.div>
       </section>
 
+      {/* Projects Hero Section */}
+      <section className="section">
+        <motion.div
+          className="container"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div variants={itemVariants} className="page-hero">
+            <h2>Imagining the Future</h2>
+            <p>
+              This project area is driven by the spirit of "そうぞうみらい" (imagine the future), where innovative ideas are turned into actionable research
+              blueprints that advance marine science and technological solutions for ocean energy and sustainability.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
       <section className="section">
         <motion.div
           className="container"
