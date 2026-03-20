@@ -337,7 +337,7 @@ const styles = `
   .contact-hero-description {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     max-width: 800px;
     margin: 0 auto;
   }
@@ -384,7 +384,7 @@ const styles = `
   .contact-card h4 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: white;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
   }
 
@@ -408,7 +408,7 @@ const styles = `
   }
 
   .contact-desc {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
@@ -443,7 +443,7 @@ const styles = `
   }
 
   .form-header p {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
     font-size: 0.95rem;
   }
 
@@ -462,7 +462,7 @@ const styles = `
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: white;
+    color: var(--text-primary);
     font-weight: 500;
     margin-bottom: 0.75rem;
     font-size: 0.95rem;
@@ -471,10 +471,10 @@ const styles = `
   .form-input, .form-textarea {
     width: 100%;
     padding: 1rem 1.25rem;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(30, 64, 175, 0.1);
     border-radius: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text-primary);
     font-size: 1rem;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
@@ -484,12 +484,12 @@ const styles = `
   .form-input:focus, .form-textarea:focus {
     outline: none;
     border-color: #3b82f6;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
   }
 
   .form-input::placeholder, .form-textarea::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
   }
 
   .form-textarea {
@@ -531,8 +531,8 @@ const styles = `
   .loading-spinner {
     width: 18px;
     height: 18px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top: 2px solid white;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    border-top: 2px solid #3b82f6;
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
@@ -561,7 +561,7 @@ const styles = `
   }
 
   .success-notification p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 0;
   }
