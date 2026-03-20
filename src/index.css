@@ -1115,6 +1115,30 @@ mark {
   animation: glassShimmer 3s ease-in-out infinite;
 }
 
+/* Transparent text variant for subtle display */
+.transparent-text {
+  /* More subtle liquid glass text effect */
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(0, 123, 191, 0.15) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Subtle glass reflection effect */
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.1),
+    0 0 10px rgba(0, 123, 191, 0.1);
+  
+  /* More transparent filter */
+  filter: drop-shadow(0 2px 4px rgba(0, 123, 191, 0.05));
+  opacity: 0.3;
+}
+
 @keyframes glassShimmer {
   0%, 100% {
     background-position: 0% 50%;

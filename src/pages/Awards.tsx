@@ -54,7 +54,7 @@ const Awards: React.FC = () => {
                 <div className="particle"></div>
               </div>
               <div className="japanese-motto">
-                <h2 className="motto-japanese">ななころびやおき</h2>
+                <h2 className="motto-japanese">どりょくせいしゅう</h2>
               </div>
             </div>
           </motion.div>

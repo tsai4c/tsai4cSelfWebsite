@@ -40,7 +40,7 @@ const Projects: React.FC = () => {
                 <div className="particle"></div>
               </div>
               <div className="japanese-motto">
-                <h2 className="motto-japanese">ななころびやおき</h2>
+                <h2 className="motto-japanese">そうぞうみらい</h2>
               </div>
             </div>
           </motion.div>

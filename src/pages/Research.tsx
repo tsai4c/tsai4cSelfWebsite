@@ -28,7 +28,7 @@ const Research: React.FC = () => {
       description: "Assessing the feasibility of renewable energy generation using the Kuroshio Current off Taiwan's east coast. This research includes turbine configuration analysis, energy output calculations, and environmental impact assessments on marine ecosystems. The goal is to develop clean energy solutions suitable for Taiwan's marine characteristics.",
       icon: <Battery size={36} />,
       status: "In Progress",
-      duration: "2024 - Ongoing",
+      duration: "2025 - Ongoing",
       type: "Primary Research Project",
       objectives: [
         "Evaluate Kuroshio Current energy potential",
@@ -42,7 +42,7 @@ const Research: React.FC = () => {
       description: "Investigating the spatial distribution and migration patterns of marine blue carbon under ocean current dynamics. This study explores carbon sequestration mechanisms and the impact of climate change on blue carbon ecosystems. The research is crucial for understanding ocean carbon cycles and developing carbon neutrality strategies.",
       icon: <MapPin size={36} />,
       status: "Data Collection",
-      duration: "2024 - Ongoing",
+      duration: "2025 - Ongoing",
       type: "Environmental Research",
       objectives: [
         "Survey blue carbon ecosystem spatial distribution",
@@ -56,7 +56,7 @@ const Research: React.FC = () => {
       description: "In-depth analysis of the formation mechanisms and predictive potential of Kuroshio Large Meander phenomena. This research involves developing numerical models to forecast the timing and path variations of large meanders. The study has significant applications for marine fisheries, shipping, and coastal environmental management.",
       icon: <TrendingUp size={36} />,
       status: "Model Development",
-      duration: "2024 - Ongoing",
+      duration: "2025 - Ongoing",
       type: "Predictive Research",
       objectives: [
         "Analyze large meander formation mechanisms",
