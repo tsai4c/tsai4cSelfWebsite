@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Phone, Calendar, Send, User, MessageSquare, ExternalLink } from 'lucide-react'
+import { Mail, MapPin, Phone, Calendar, Send, User, MessageSquare, ExternalLink, Linkedin, Github, Instagram, MessageCircle } from 'lucide-react'
 
 interface FormData {
   name: string;
@@ -148,6 +148,23 @@ const Contact: React.FC = () => {
             {/* Contact Information Cards */}
             <motion.div variants={itemVariants} className="contact-info-section">
               <h3>Get In Touch</h3>
+              
+              {/* Social Media Links */}
+              <div className="social-links mobile-centered">
+                <a href="https://linkedin.com/in/tsai4c" target="_blank" rel="noopener noreferrer" className="social-link">
+                  <Linkedin size={24} />
+                </a>
+                <a href="https://www.instagram.com/libta_8uh9/" target="_blank" rel="noopener noreferrer" className="social-link">
+                  <Instagram size={24} />
+                </a>
+                <a href="https://github.com/tsai4c" target="_blank" rel="noopener noreferrer" className="social-link">
+                  <Github size={24} />
+                </a>
+                <a href="https://t.me/tsai4c" target="_blank" rel="noopener noreferrer" className="social-link">
+                  <MessageCircle size={24} />
+                </a>
+              </div>
+              
               <div className="contact-cards">
                 {contactInfo.map((info, index) => (
                   <motion.div
@@ -349,7 +366,27 @@ const styles = `
     align-items: start;
   }
 
+  .contact-info-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-form-section {
+    position: static;
+    height: fit-content;
+    margin-top: 0;
+  }
+
   .contact-info-section h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #1e40af, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    font-family: 'Dancing Script', cursive;
+  }
     font-size: 2rem;
     font-weight: 600;
     background: linear-gradient(135deg, #1e40af, #06b6d4);
@@ -414,9 +451,62 @@ const styles = `
     margin: 0;
   }
 
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+  }
+
+  .social-links.mobile-centered {
+    justify-content: center;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-link:hover {
+    transform: translateY(-3px);
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+  }
+
+  .social-link:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .social-link:hover:before {
+    opacity: 1;
+  }
+
   .contact-form-section {
-    position: sticky;
-    top: 2rem;
+    position: static;
+    height: fit-content;
   }
 
   .contact-form-container {
@@ -424,6 +514,8 @@ const styles = `
     border-radius: 25px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .form-header {
@@ -445,6 +537,11 @@ const styles = `
   .form-header p {
     color: var(--text-secondary);
     font-size: 0.95rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
   }
 
   .form-grid {
@@ -586,6 +683,7 @@ const styles = `
 
     .contact-form-container {
       padding: 2rem;
+      min-height: auto;
     }
 
     .form-grid {
@@ -599,6 +697,16 @@ const styles = `
 
     .contact-info-section h3 {
       font-size: 1.75rem;
+    }
+
+    .social-links {
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 44px;
+      height: 44px;
     }
   }
 
