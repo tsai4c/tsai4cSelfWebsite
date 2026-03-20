@@ -374,19 +374,10 @@ const styles = `
   .contact-form-section {
     position: static;
     height: fit-content;
-    margin-top: calc(2rem + 1.5rem + 2rem + 48px);
+    margin-top: 7.5rem;
   }
 
   .contact-info-section h3 {
-    font-size: 2rem;
-    font-weight: 600;
-    background: linear-gradient(135deg, #1e40af, #06b6d4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 2rem;
-    font-family: 'Dancing Script', cursive;
-  }
     font-size: 2rem;
     font-weight: 600;
     background: linear-gradient(135deg, #1e40af, #06b6d4);
