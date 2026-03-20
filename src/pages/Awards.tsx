@@ -62,7 +62,7 @@ const Awards: React.FC = () => {
       </section>
 
       {/* Awards Hero Section */}
-      <section className="section">
+      <section className="section page-hero-section">
         <motion.div
           className="container"
           variants={containerVariants}

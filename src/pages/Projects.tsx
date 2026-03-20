@@ -48,7 +48,7 @@ const Projects: React.FC = () => {
       </section>
 
       {/* Projects Hero Section */}
-      <section className="section">
+      <section className="section page-hero-section">
         <motion.div
           className="container"
           variants={containerVariants}
