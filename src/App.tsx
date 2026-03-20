@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import MobileMenu from './components/MobileMenu'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
 import Research from './pages/Research'
@@ -19,6 +20,7 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="App">
+      <ScrollToTop />
       <Navbar />
       <MobileMenu />
       <motion.main
