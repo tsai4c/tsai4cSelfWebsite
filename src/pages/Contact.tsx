@@ -62,9 +62,9 @@ const Contact: React.FC = () => {
     {
       icon: <Mail size={24} />,
       title: "Email",
-      content: "tsai4c@gmail.com",
+      content: "isshixitsai@gmail.com",
       description: "Feel free to reach out for collaboration or research discussions",
-      action: "mailto:tsai4c@gmail.com"
+      action: "mailto:isshixitsai@gmail.com"
     },
     {
       icon: <MapPin size={24} />,

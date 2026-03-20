@@ -59,7 +59,7 @@ const About: React.FC = () => {
                 <a href="https://github.com/tsai4c" target="_blank" rel="noopener noreferrer" className="social-link">
                   <Github size={24} />
                 </a>
-                <a href="mailto:tsai4c@gmail.com" className="social-link">
+                <a href="mailto:isshixitsai@gmail.com" className="social-link">
                   <Mail size={24} />
                 </a>
               </div>
