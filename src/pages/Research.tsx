@@ -122,7 +122,14 @@ const Research: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div variants={itemVariants} className="section-header">
-            <h2>Ongoing Research</h2>
+            <h2 style={{ 
+              fontFamily: "'Dancing Script', cursive", 
+              fontSize: '2.5rem',
+              background: 'linear-gradient(135deg, #1e40af, #3b82f6, #06b6d4)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>Ongoing Research</h2>
             <p>Current research projects focusing on Taiwan's marine environment and ocean current systems.</p>
           </motion.div>
 

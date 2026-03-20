@@ -39,6 +39,15 @@ const Contact: React.FC = () => {
     }
   }
 
+  const contentBlockVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8 }
+    }
+  }
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -132,10 +141,10 @@ const Contact: React.FC = () => {
       <section className="section">
         <motion.div
           className="container"
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.3 }}
+          variants={contentBlockVariants}
         >
           <div className="contact-layout">
             {/* Contact Information Cards */}

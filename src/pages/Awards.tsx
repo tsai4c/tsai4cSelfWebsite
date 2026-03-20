@@ -22,6 +22,15 @@ const Awards: React.FC = () => {
     }
   }
 
+  const contentBlockVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8 }
+    }
+  }
+
   const awards = [
     {
       title: "台北市112學年度畢業生市長獎",
@@ -62,7 +71,7 @@ const Awards: React.FC = () => {
       </section>
 
       {/* Awards Hero Section */}
-      <section className="section page-hero-section">
+      <section className="section">
         <motion.div
           className="container"
           variants={containerVariants}
@@ -80,22 +89,21 @@ const Awards: React.FC = () => {
         </motion.div>
       </section>
 
+      {/* Awards 內容區塊 */}
       <section className="section">
         <motion.div
           className="container"
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.3 }}
+          variants={contentBlockVariants}
         >
-          {/* Awards Section */}
-          <motion.div variants={itemVariants} className="awards-section">
+          <motion.div className="awards-section">
             <h2>Awards & Recognition</h2>
             <div className="awards-grid">
               {awards.map((award, index) => (
                 <motion.div 
                   key={index}
-                  variants={itemVariants}
                   className="award-card ocean-card liquid-glass"
                   whileHover={{ 
                     scale: 1.05,
@@ -147,3 +155,178 @@ const Awards: React.FC = () => {
 }
 
 export default Awards
+
+const styles = `
+  .awards-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .awards-section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #1e40af, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+  }
+
+  .awards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .award-card {
+    padding: 2rem;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .award-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .award-icon {
+    color: #3b82f6;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .award-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .award-category {
+    display: inline-block;
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .award-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .award-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .award-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .award-subtitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #3b82f6;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .award-organization {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .award-organization svg {
+    color: #06b6d4;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .org-chinese {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .org-english {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0.25rem 0 0 0;
+  }
+
+  .award-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .awards-section h2 {
+      font-size: 2rem;
+    }
+
+    .award-card {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+
+    .award-header {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .award-meta {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .award-title {
+      font-size: 1.25rem;
+    }
+
+    .award-subtitle {
+      font-size: 1rem;
+    }
+  }
+`
+
+// Inject styles
+if (typeof document !== 'undefined') {
+  const styleElement = document.createElement('style')
+  styleElement.textContent = styles
+  if (!document.head.querySelector('style[data-awards-styles]')) {
+    styleElement.setAttribute('data-awards-styles', 'true')
+    document.head.appendChild(styleElement)
+  }
+}

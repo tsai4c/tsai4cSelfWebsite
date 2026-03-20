@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, Search } from 'lucide-react'
 
 const Navbar: React.FC = () => {
@@ -88,21 +88,35 @@ const Navbar: React.FC = () => {
               className="nav-brand"
               whileHover={{ scale: 1.05 }}
             >
-              <Link to="/" className="brand-link">
+              <NavLink to="/" className="brand-link">
                 <span className="nav-title cursive-title">Tsai4c</span>
-              </Link>
+              </NavLink>
             </motion.div>
 
             {/* Desktop Navigation */}
             <ul className="nav-links desktop-nav">
               {navItems.map((item) => (
                 <li key={item.to}>
-                  <Link 
+                  <NavLink 
                     to={item.to} 
-                    className={location.pathname === item.to ? 'active' : ''}
+                    style={({ isActive }) => isActive ? {
+                      color: 'var(--ocean-primary)',
+                      background: 'rgba(100, 150, 255, 0.15)',
+                      fontWeight: '600',
+                      borderRadius: '20px',
+                      padding: '0.6rem 1.2rem',
+                      boxShadow: 'inset 0 2px 8px rgba(30, 64, 175, 0.2)',
+                      transition: 'all 0.3s ease',
+                      textDecoration: 'none',
+                      display: 'inline-block'
+                    } : {
+                      textDecoration: 'none',
+                      display: 'inline-block'
+                    }}
+                    className="nav-link"
                   >
                     {item.label}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -213,10 +227,10 @@ const Navbar: React.FC = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.08 + 0.15 }}
                     >
-                      <Link 
+                      <NavLink 
                         to={item.to} 
                         onClick={closeMobileMenu} 
-                        className={`mobile-nav-link ${location.pathname === item.to ? 'active' : ''}`}
+                        className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
                       >
                         <span className="nav-link-text">{item.label}</span>
                         {location.pathname === item.to && (
@@ -225,7 +239,7 @@ const Navbar: React.FC = () => {
                             layoutId="mobile-nav-indicator"
                           />
                         )}
-                      </Link>
+                      </NavLink>
                     </motion.div>
                   ))}
                 </nav>
