@@ -98,8 +98,9 @@ const Awards: React.FC = () => {
                   variants={itemVariants}
                   className="award-card ocean-card liquid-glass"
                   whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "rgba(30, 64, 175, 0.2) 0 25px 50px -12px"
+                    scale: 1.05,
+                    rotateY: 5,
+                    boxShadow: "rgba(30, 64, 175, 0.3) 0 25px 50px -12px"
                   }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >

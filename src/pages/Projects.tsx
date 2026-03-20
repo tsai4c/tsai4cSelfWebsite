@@ -77,22 +77,40 @@ const Projects: React.FC = () => {
           <motion.div variants={itemVariants} className="future-projects">
             <h2>Future Plans</h2>
             <div className="future-grid">
-              <div className="future-item ocean-card liquid-glass">
+              <motion.div
+                variants={itemVariants}
+                className="future-item ocean-card liquid-glass"
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 5,
+                  boxShadow: "rgba(30, 64, 175, 0.3) 0 25px 50px -12px"
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <div className="floating-particles">
                   <div className="particle"></div>
                   <div className="particle"></div>
                 </div>
                 <h3>Kuroshio Large Meander Prediction</h3>
                 <p>Developing advanced prediction models to forecast Kuroshio Large Meander phenomena, helping marine industries and coastal communities prepare for oceanographic changes</p>
-              </div>
-              <div className="future-item ocean-card liquid-glass">
+              </motion.div>
+              <motion.div
+                variants={itemVariants}
+                className="future-item ocean-card liquid-glass"
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 5,
+                  boxShadow: "rgba(30, 64, 175, 0.3) 0 25px 50px -12px"
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 <div className="floating-particles">
                   <div className="particle"></div>
                   <div className="particle"></div>
                 </div>
                 <h3>Kuroshio Generation Website</h3>
                 <p>Creating a comprehensive web platform dedicated to Kuroshio Current power generation research, featuring interactive visualizations and real-time data analysis tools</p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>

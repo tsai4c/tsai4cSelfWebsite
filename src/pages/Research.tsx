@@ -132,6 +132,12 @@ const Research: React.FC = () => {
                 key={index}
                 variants={itemVariants}
                 className="research-card ocean-card liquid-glass"
+                whileHover={{ 
+                  scale: 1.05,
+                  rotateY: 5,
+                  boxShadow: "rgba(30, 64, 175, 0.3) 0 25px 50px -12px"
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
                 <div className="research-header">
                   <div className="research-icon">
