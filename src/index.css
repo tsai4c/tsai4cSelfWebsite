@@ -2193,22 +2193,34 @@ mark {
   }
 }
 
-/* Full height hero section for Research/Projects/Awards */
+/* Fullpage hero (same for Research/Projects/Awards) */
 .page-hero-section {
   min-height: calc(100vh - 70px);
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 0;
+  background: transparent;
 }
 
-.page-hero-section .motto-content,
+.page-hero-section .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-hero-section .motto-section,
 .page-hero-section .contact-hero {
   width: 100%;
-  max-width: 960px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .page-hero-section .motto-content {
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
+}
+
+.page-hero-section .motto-content .japanese-motto {
+  margin: 0 auto;
 }
