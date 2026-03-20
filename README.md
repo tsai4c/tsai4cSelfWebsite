@@ -4,7 +4,7 @@ A modern personal website for marine science research, built with React and feat
 
 ## 👋 About
 
-This is the personal website of Shi-Xi Tsai (Charles), a Marine Science Student & Research Assistant at National Taiwan Ocean University, specializing in Kuroshio Current research.
+This is the personal website of Shi-Xi Tsai (Charles), a Marine Science Student & Part-time Research Assistant at Academia Sinica, specializing in Kuroshio Current research.
 
 ## 🛠️ Tech Stack
 

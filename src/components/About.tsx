@@ -39,7 +39,7 @@ const About: React.FC = () => {
           <motion.div variants={itemVariants} className="about-content">
             <p className="about-intro">
               Hello! I'm Shi-Xi Tsai, currently studying at National Taiwan Ocean University 
-              while serving as a research assistant. I have a deep passion for marine science, 
+              while serving as a part-time research assistant at Academia Sinica. I have a deep passion for marine science, 
               with a particular focus on Kuroshio Current research.
             </p>
 
@@ -71,7 +71,7 @@ const About: React.FC = () => {
                 <Calendar className="highlight-icon" />
                 <div>
                   <h4>Research Experience</h4>
-                  <p>Research Assistant</p>
+                  <p>Part-time at Academia Sinica</p>
                 </div>
               </div>
             </div>

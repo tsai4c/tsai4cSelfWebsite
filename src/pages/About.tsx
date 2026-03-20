@@ -65,7 +65,7 @@ const About: React.FC = () => {
               </div>
               
               <p className="profile-description mobile-compact">
-                Marine Science Student & Research Assistant at National Taiwan Ocean University. 
+                Marine Science Student & Part-time Research Assistant at Academia Sinica. 
                 Passionate about Kuroshio Current research, focusing on power generation potential 
                 and large meander phenomena affecting Taiwan's marine environment.
               </p>
@@ -108,7 +108,8 @@ const About: React.FC = () => {
                 <Calendar className="academic-icon" />
                 <div>
                   <h4>Position</h4>
-                  <p>Research Assistant</p>
+                  <p>Part-time Research Assistant</p>
+                  <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.25rem' }}>Academia Sinica</p>
                 </div>
               </div>
             </div>

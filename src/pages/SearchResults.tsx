@@ -22,7 +22,7 @@ const SearchResults: React.FC = () => {
     // Home page content
     {
       title: "Shi-Xi Tsai - Marine Science Student",
-      content: "Marine Science Student & Research Assistant studying Kuroshio Current research oceanography Taiwan",
+      content: "Marine Science Student & Part-time Research Assistant at Academia Sinica studying Kuroshio Current research oceanography Taiwan",
       path: "/",
       type: "Home",
       icon: User
@@ -30,7 +30,7 @@ const SearchResults: React.FC = () => {
     // About page content
     {
       title: "About Me",
-      content: "marine science student research assistant oceanography biology Taiwan university academic background education experience",
+      content: "marine science student part-time research assistant at Academia Sinica oceanography biology Taiwan university academic background education experience",
       path: "/about",
       type: "About",
       icon: User

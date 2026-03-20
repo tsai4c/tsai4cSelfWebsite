@@ -36,7 +36,7 @@ const Home: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                Marine Science Student & Research Assistant
+                Marine Science Student & Part-time Research Assistant
               </motion.p>
 
               <motion.p 
