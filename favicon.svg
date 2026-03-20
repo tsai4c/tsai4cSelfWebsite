@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="white" stroke="#f0f0f0" stroke-width="2"/>
+  
+  <!-- Cursive T in black -->
+  <text x="100" y="140" font-family="'Dancing Script', cursive" font-size="120" font-weight="600" fill="black" text-anchor="middle" dominant-baseline="middle">
+    T
+  </text>
+</svg>
