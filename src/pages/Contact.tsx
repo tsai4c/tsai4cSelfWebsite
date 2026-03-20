@@ -374,7 +374,7 @@ const styles = `
   .contact-form-section {
     position: static;
     height: fit-content;
-    margin-top: 0;
+    margin-top: calc(2rem + 1.5rem + 2rem + 48px);
   }
 
   .contact-info-section h3 {
@@ -679,6 +679,7 @@ const styles = `
 
     .contact-form-section {
       position: static;
+      margin-top: 0;
     }
 
     .contact-form-container {
