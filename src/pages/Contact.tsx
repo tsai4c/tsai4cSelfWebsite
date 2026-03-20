@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Phone, Calendar, Send, User, MessageSquare, ExternalLink, Linkedin, Github, Instagram, MessageCircle } from 'lucide-react'
+import { Mail, MapPin, Phone, Send, User, MessageSquare, ExternalLink, Linkedin, Github, Instagram, MessageCircle } from 'lucide-react'
 
 interface FormData {
   name: string;
@@ -78,13 +78,6 @@ const Contact: React.FC = () => {
       title: "Phone",
       content: "+886-916-339-897",
       description: "Available during business hours",
-      action: null
-    },
-    {
-      icon: <Calendar size={24} />,
-      title: "Office Hours",
-      content: "Mon-Fri 9:00-17:00",
-      description: "Taiwan Standard Time (GMT+8)",
       action: null
     }
   ]
