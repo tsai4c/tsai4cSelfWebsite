@@ -70,9 +70,9 @@ const Awards: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.div variants={itemVariants} className="page-hero">
+          <motion.div variants={itemVariants} className="contact-hero">
             <h2>Effort Meets Recognition</h2>
-            <p>
+            <p className="contact-hero-description">
               The phrase "どりょくせいしゅう" (effort brings success) is reflected here through achievements that acknowledge persistence,
               academic excellence, and dedication to oceanographic research in the face of complex challenges.
             </p>

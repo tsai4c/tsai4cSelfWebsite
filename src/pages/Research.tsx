@@ -102,9 +102,9 @@ const Research: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.div variants={itemVariants} className="page-hero">
+          <motion.div variants={itemVariants} className="contact-hero">
             <h2>Resilience in Research</h2>
-            <p>
+            <p className="contact-hero-description">
               Inspired by the motto "ななころびやおき" (fall down seven times, get up eight), this section reflects the ongoing commitment to persistent,
               adaptive research that navigates challenges and emerges stronger for the science of the Kuroshio Current.
             </p>

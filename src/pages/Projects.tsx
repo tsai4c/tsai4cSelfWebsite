@@ -56,9 +56,9 @@ const Projects: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.div variants={itemVariants} className="page-hero">
+          <motion.div variants={itemVariants} className="contact-hero">
             <h2>Imagining the Future</h2>
-            <p>
+            <p className="contact-hero-description">
               This project area is driven by the spirit of "そうぞうみらい" (imagine the future), where innovative ideas are turned into actionable research
               blueprints that advance marine science and technological solutions for ocean energy and sustainability.
             </p>
