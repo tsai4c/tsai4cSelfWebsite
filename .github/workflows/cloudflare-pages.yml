@@ -15,12 +15,12 @@ jobs:
     name: Publish to Cloudflare Pages
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
@@ -36,5 +36,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: tsai4c-website
           directory: dist
-          # Optional: Enable GitHub Deployments
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
