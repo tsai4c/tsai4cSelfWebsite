@@ -1,30 +1,120 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useRef } from 'react'
+import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
 import { Waves, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+const AnimatedSection: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ 
+  children, 
+  className = '',
+  delay = 0 
+}) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ opacity: 0, y: 60 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+      transition={{ 
+        duration: 0.8, 
+        delay,
+        ease: [0.22, 1, 0.36, 1]
+      }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+const FloatingParticle: React.FC<{ delay: number; x: number; y: number; size: number }> = ({ 
+  delay, 
+  x, 
+  y, 
+  size 
+}) => (
+  <motion.div
+    className="floating-particle"
+    style={{
+      position: 'absolute',
+      left: `${x}%`,
+      top: `${y}%`,
+      width: size,
+      height: size,
+      borderRadius: '50%',
+      background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(6, 182, 212, 0.3))',
+    }}
+    animate={{
+      y: [0, -30, 0],
+      opacity: [0.3, 0.6, 0.3],
+      scale: [1, 1.2, 1],
+    }}
+    transition={{
+      duration: 4 + Math.random() * 2,
+      delay,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  />
+)
+
 const Home: React.FC = () => {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  }
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+  
+  const smoothY = useSpring(y, { stiffness: 100, damping: 30, restDelta: 0.001 })
+
+  const section1Ref = useRef(null)
+  const section2Ref = useRef(null)
+  const isInView1 = useInView(section1Ref, { once: true, margin: "-150px" })
+  const isInView2 = useInView(section2Ref, { once: true, margin: "-150px" })
 
   return (
-    <div className="page home-page">
-      {/* Hero Section - 簡化版 */}
-      <section className="hero min-hero unified-bg">
+    <div className="page home-page" ref={containerRef}>
+      <motion.div 
+        className="hero min-hero unified-bg" 
+        style={{ y: smoothY, opacity, scale }}
+      >
+        <div className="hero-particles">
+          <FloatingParticle delay={0} x={10} y={20} size={8} />
+          <FloatingParticle delay={0.5} x={25} y={60} size={6} />
+          <FloatingParticle delay={1} x={40} y={30} size={10} />
+          <FloatingParticle delay={1.5} x={55} y={70} size={7} />
+          <FloatingParticle delay={2} x={70} y={40} size={9} />
+          <FloatingParticle delay={2.5} x={85} y={25} size={6} />
+          <FloatingParticle delay={3} x={15} y={80} size={8} />
+          <FloatingParticle delay={3.5} x={60} y={15} size={7} />
+        </div>
+
         <div className="container">
           <div className="hero-content-center">
             <motion.div
               className="hero-text-center"
               initial="hidden"
               animate="visible"
-              variants={fadeInUp}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.2,
+                    delayChildren: 0.3
+                  }
+                }
+              }}
             >
               <motion.h1
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="hero-title-large cursive-title"
               >
                 Shi-Xi Tsai
@@ -34,7 +124,7 @@ const Home: React.FC = () => {
                 className="hero-subtitle-clean"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               >
                 Marine Science Student & Part-time Research Assistant
               </motion.p>
@@ -43,7 +133,7 @@ const Home: React.FC = () => {
                 className="hero-description-clean"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
                 Researching Kuroshio power generation in Taiwan and the Kuroshio large meander
               </motion.p>
@@ -52,23 +142,327 @@ const Home: React.FC = () => {
                 className="hero-buttons-clean"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
+                transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Link to="/about" className="clean-button primary">
-                  <Waves size={18} />
-                  Learn More
-                </Link>
-                <Link to="/research" className="clean-button secondary">
-                  My Research
-                  <ArrowRight size={16} />
-                </Link>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/about" className="clean-button primary">
+                    <Waves size={18} />
+                    Learn More
+                  </Link>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05, x: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link to="/research" className="clean-button secondary">
+                    My Research
+                    <ArrowRight size={16} />
+                  </Link>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
         </div>
-      </section>
+
+        <motion.div 
+          className="scroll-indicator"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.5 }}
+        >
+          <motion.div
+            className="scroll-mouse"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="scroll-wheel" />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
+      <motion.section 
+        ref={section1Ref}
+        className="section quick-intro-section"
+        initial={{ opacity: 0 }}
+        animate={isInView1 ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="container">
+          <AnimatedSection delay={0}>
+            <div className="quick-intro-content">
+              <motion.h2 
+                className="quick-intro-title"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                Exploring the Ocean's Secrets
+              </motion.h2>
+              <motion.p
+                className="quick-intro-text"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                Dedicated to understanding the Kuroshio Current and its potential for sustainable energy solutions.
+              </motion.p>
+            </div>
+          </AnimatedSection>
+
+          <div className="quick-links-grid">
+            {[
+              { icon: <Waves size={24} />, title: 'Research', desc: 'Kuroshio studies', link: '/research' },
+              { icon: <Waves size={24} />, title: 'Projects', desc: 'Future innovations', link: '/projects' },
+              { icon: <Waves size={24} />, title: 'Awards', desc: 'Recognition', link: '/awards' },
+              { icon: <Waves size={24} />, title: 'Contact', desc: 'Get in touch', link: '/contact' },
+            ].map((item, index) => (
+              <AnimatedSection key={index} delay={0.3 + index * 0.1}>
+                <motion.div
+                  className="quick-link-card ocean-card liquid-glass"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    rotateY: 3,
+                    boxShadow: "0 20px 40px rgba(30, 64, 175, 0.2)"
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <div className="quick-link-icon">{item.icon}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                  <Link to={item.link} className="quick-link-overlay" />
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section 
+        ref={section2Ref}
+        className="section stats-section"
+        initial={{ opacity: 0 }}
+        animate={isInView2 ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="container">
+          <div className="stats-grid">
+            {[
+              { number: '3+', label: 'Research Projects' },
+              { number: '1', label: 'Institution' },
+              { number: '∞', label: 'Curiosity' },
+            ].map((stat, index) => (
+              <AnimatedSection key={index} delay={0.2 + index * 0.15}>
+                <motion.div 
+                  className="stat-item"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={isInView2 ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.15, type: "spring" }}
+                >
+                  <span className="stat-number">{stat.number}</span>
+                  <span className="stat-label">{stat.label}</span>
+                </motion.div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </motion.section>
     </div>
   )
 }
 
 export default Home
+
+const homeStyles = `
+  .hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .floating-particle {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .scroll-mouse {
+    width: 26px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+  }
+
+  .scroll-wheel {
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+  }
+
+  .quick-intro-section {
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(224, 242, 254, 0.3) 50%, rgba(255,255,255,0) 100%);
+  }
+
+  .quick-intro-content {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .quick-intro-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #1e40af, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .quick-intro-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .quick-link-card {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quick-link-icon {
+    color: #3b82f6;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .quick-link-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .quick-link-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .quick-link-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .stats-section {
+    padding: 4rem 0;
+  }
+
+  .stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  .stat-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Dancing Script', cursive;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  @media (max-width: 1024px) {
+    .quick-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .quick-intro-title {
+      font-size: 2rem;
+    }
+
+    .quick-intro-text {
+      font-size: 1rem;
+    }
+
+    .quick-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .quick-link-card {
+      padding: 1.5rem 1rem;
+    }
+
+    .quick-link-card h3 {
+      font-size: 1rem;
+    }
+
+    .stats-grid {
+      gap: 2rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+    }
+
+    .scroll-indicator {
+      display: none;
+    }
+  }
+`
+
+if (typeof document !== 'undefined') {
+  const styleElement = document.createElement('style')
+  styleElement.textContent = homeStyles
+  if (!document.head.querySelector('style[data-home-styles]')) {
+    styleElement.setAttribute('data-home-styles', 'true')
+    document.head.appendChild(styleElement)
+  }
+}

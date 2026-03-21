@@ -1,31 +1,50 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { Battery, MapPin, TrendingUp, Clock } from 'lucide-react'
 
+const AnimatedSection: React.FC<{ 
+  children: React.ReactNode; 
+  className?: string; 
+  delay?: number;
+  direction?: 'up' | 'left' | 'right';
+}> = ({ 
+  children, 
+  className = '',
+  delay = 0,
+  direction = 'up'
+}) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-80px" })
+  
+  const initialState = {
+    opacity: 0,
+    ...(direction === 'up' && { y: 50 }),
+    ...(direction === 'left' && { x: -50 }),
+    ...(direction === 'right' && { x: 50 }),
+  }
+  
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={initialState}
+      animate={isInView ? { opacity: 1, y: 0, x: 0 } : initialState}
+      transition={{ 
+        duration: 0.7, 
+        delay,
+        ease: [0.22, 1, 0.36, 1] as const
+      }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 const Research: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  }
-
   const ongoingResearch = [
     {
       title: "Kuroshio Current Power Generation",
-      description: "Assessing the feasibility of renewable energy generation using the Kuroshio Current off Taiwan's east coast. This research includes turbine configuration analysis, energy output calculations, and environmental impact assessments on marine ecosystems. The goal is to develop clean energy solutions suitable for Taiwan's marine characteristics.",
+      description: "Assessing the feasibility of renewable energy generation using the Kuroshio Current off Taiwan's east coast. This research includes turbine configuration analysis, energy output calculations, and environmental impact assessments on marine ecosystems.",
       icon: <Battery size={36} />,
       status: "In Progress",
       duration: "2025 - Ongoing",
@@ -39,7 +58,7 @@ const Research: React.FC = () => {
     },
     {
       title: "Blue Carbon Trajectory Drift",
-      description: "Investigating the spatial distribution and migration patterns of marine blue carbon under ocean current dynamics. This study explores carbon sequestration mechanisms and the impact of climate change on blue carbon ecosystems. The research is crucial for understanding ocean carbon cycles and developing carbon neutrality strategies.",
+      description: "Investigating the spatial distribution and migration patterns of marine blue carbon under ocean current dynamics. This study explores carbon sequestration mechanisms and the impact of climate change on blue carbon ecosystems.",
       icon: <MapPin size={36} />,
       status: "Data Collection",
       duration: "2025 - Ongoing",
@@ -53,7 +72,7 @@ const Research: React.FC = () => {
     },
     {
       title: "Kuroshio Large Meander Predictability Assessment",
-      description: "In-depth analysis of the formation mechanisms and predictive potential of Kuroshio Large Meander phenomena. This research involves developing numerical models to forecast the timing and path variations of large meanders. The study has significant applications for marine fisheries, shipping, and coastal environmental management.",
+      description: "In-depth analysis of the formation mechanisms and predictive potential of Kuroshio Large Meander phenomena. This research involves developing numerical models to forecast the timing and path variations of large meanders.",
       icon: <TrendingUp size={36} />,
       status: "Model Development",
       duration: "2025 - Ongoing",
@@ -69,59 +88,48 @@ const Research: React.FC = () => {
 
   return (
     <div className="page">
-      {/* Motto Section */}
       <section className="section">
-        <motion.div
-          className="container"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.div variants={itemVariants} className="motto-section">
-            <div className="motto-content liquid-glass">
-              <div className="floating-particles">
-                <div className="particle"></div>
-                <div className="particle"></div>
-                <div className="particle"></div>
-              </div>
-              <div className="japanese-motto">
-                <h2 className="motto-japanese">ななころびやおき</h2>
-              </div>
+        <AnimatedSection direction="up" delay={0}>
+          <div className="motto-content liquid-glass">
+            <div className="floating-particles">
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  className="particle"
+                  animate={{ y: [-15, 15, -15], opacity: [0.3, 0.7, 0.3] }}
+                  transition={{ duration: 4, repeat: Infinity, delay: i * 0.5 }}
+                />
+              ))}
             </div>
-          </motion.div>
-        </motion.div>
+            <div className="japanese-motto">
+              <h2 className="motto-japanese">ななころびやおき</h2>
+            </div>
+          </div>
+        </AnimatedSection>
       </section>
 
-      {/* Research Hero Section */}
       <section className="section">
-        <motion.div
-          className="container"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.div variants={itemVariants} className="contact-hero">
-            <h2>Resilience in Research</h2>
+        <AnimatedSection direction="up" delay={0.1}>
+          <div className="contact-hero">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              Resilience in Research
+            </motion.h2>
             <p className="contact-hero-description">
               Inspired by the motto "ななころびやおき" (fall down seven times, get up eight), this section reflects the ongoing commitment to persistent,
               adaptive research that navigates challenges and emerges stronger for the science of the Kuroshio Current.
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </AnimatedSection>
       </section>
 
-      {/* Ongoing Research Section */}
       <section className="section">
-        <motion.div
-          className="container"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.div variants={itemVariants} className="section-header">
+        <AnimatedSection direction="up" delay={0}>
+          <div className="section-header">
             <h2 style={{ 
               fontFamily: "'Dancing Script', cursive", 
               fontSize: '2.5rem',
@@ -131,59 +139,76 @@ const Research: React.FC = () => {
               backgroundClip: 'text'
             }}>Ongoing Research</h2>
             <p>Current research projects focusing on Taiwan's marine environment and ocean current systems.</p>
-          </motion.div>
+          </div>
 
           <div className="research-grid">
             {ongoingResearch.map((project, index) => (
-              <motion.div 
-                key={index}
-                variants={itemVariants}
-                className="research-card ocean-card liquid-glass"
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 5,
-                  boxShadow: "rgba(30, 64, 175, 0.3) 0 25px 50px -12px"
-                }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="research-header">
-                  <div className="research-icon">
-                    {project.icon}
-                  </div>
-                  <div className="research-meta">
-                    <span className="research-status">{project.status}</span>
-                    <span className="research-type">{project.type}</span>
-                  </div>
-                </div>
-                
-                <div className="research-content">
-                  <h3 className="research-title">{project.title}</h3>
-                  
-                  <div className="research-duration">
-                    <Clock size={16} />
-                    <span>{project.duration}</span>
+              <AnimatedSection key={index} direction="up" delay={index * 0.15}>
+                <motion.div 
+                  className="research-card ocean-card liquid-glass"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotateY: 3,
+                    boxShadow: "rgba(30, 64, 175, 0.3) 0 25px 50px -12px"
+                  }}
+                >
+                  <div className="research-header">
+                    <div className="research-icon">
+                      {project.icon}
+                    </div>
+                    <div className="research-meta">
+                      <span className="research-status">{project.status}</span>
+                      <span className="research-type">{project.type}</span>
+                    </div>
                   </div>
                   
-                  <p className="research-description">{project.description}</p>
-                  
-                  <div className="research-objectives">
-                    <h5>Research Objectives</h5>
-                    <ul>
-                      {project.objectives.map((objective, objIndex) => (
-                        <li key={objIndex}>{objective}</li>
-                      ))}
-                    </ul>
+                  <div className="research-content">
+                    <h3 className="research-title">{project.title}</h3>
+                    
+                    <div className="research-duration">
+                      <Clock size={16} />
+                      <span>{project.duration}</span>
+                    </div>
+                    
+                    <p className="research-description">{project.description}</p>
+                    
+                    <div className="research-objectives">
+                      <h5>Research Objectives</h5>
+                      <ul>
+                        {project.objectives.map((objective, objIndex) => (
+                          <motion.li 
+                            key={objIndex}
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: objIndex * 0.1 }}
+                          >
+                            {objective}
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
 
-                <div className="floating-particles">
-                  <div className="particle"></div>
-                  <div className="particle"></div>
-                </div>
-              </motion.div>
+                  <div className="floating-particles">
+                    {[0, 1].map((i) => (
+                      <motion.div
+                        key={i}
+                        className="particle"
+                        animate={{ y: [-10, 10, -10], opacity: [0.2, 0.5, 0.2] }}
+                        transition={{ duration: 3, repeat: Infinity, delay: i * 0.3 }}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatedSection>
             ))}
           </div>
-        </motion.div>
+        </AnimatedSection>
       </section>
     </div>
   )
