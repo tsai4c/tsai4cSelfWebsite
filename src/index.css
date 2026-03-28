@@ -111,6 +111,9 @@ html, body {
   --navbar-bg-scrolled: rgba(15, 23, 42, 0.92);
   --navbar-border: rgba(148, 163, 184, 0.1);
 
+  --cursive-title-color: #93c5fd;
+  --cursive-title-hover: #bfdbfe;
+
   color-scheme: dark;
 }
 
@@ -211,7 +214,7 @@ code {
 .cursive-title {
   font-family: var(--font-cursive);
   font-weight: 600;
-  color: #1e3a8a !important; /* 深藍色 */
+  color: var(--cursive-title-color, #1e3a8a) !important;
   font-size: 1.8rem;
   letter-spacing: 0.5px;
   text-shadow: 0 2px 4px rgba(30, 58, 138, 0.3);
@@ -220,13 +223,13 @@ code {
 /* 導航欄標題特殊樣式 */
 .nav-title.cursive-title {
   font-size: 1.5rem;
-  color: #1e3a8a !important;
+  color: var(--cursive-title-color, #1e3a8a) !important;
   transition: all 0.3s ease;
   text-decoration: none !important;
 }
 
 .nav-title.cursive-title:hover {
-  color: #1e40af !important;
+  color: var(--cursive-title-hover, #1e40af) !important;
   text-shadow: 0 2px 8px rgba(30, 58, 138, 0.4);
   transform: scale(1.05);
   text-decoration: none !important;
@@ -461,7 +464,7 @@ code {
 
 .nav-title.cursive-title {
   font-size: 1.5rem;
-  color: #1e3a8a !important;
+  color: var(--cursive-title-color, #1e3a8a) !important;
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
