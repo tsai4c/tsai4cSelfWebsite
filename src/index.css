@@ -123,28 +123,6 @@ html, body {
   color: #e2e8f0;
 }
 
-/* Theme Toggle Button */
-.theme-toggle-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  background: var(--glass-bg);
-  color: var(--ocean-primary);
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border-light);
-  transition: all 0.3s ease;
-}
-
-.theme-toggle-btn:hover {
-  background: var(--ocean-primary);
-  color: white;
-  border-color: var(--ocean-primary);
-}
 
 body {
   margin: 0;
@@ -517,12 +495,12 @@ code {
 /* Theme Toggle Button */
 .theme-toggle-btn {
   background: transparent;
-  border: 1px solid var(--border-light);
-  color: var(--text-secondary);
+  border: 1px solid var(--border-medium);
+  color: var(--ocean-primary);
   cursor: pointer;
   padding: 0.6rem;
   border-radius: 8px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -531,10 +509,9 @@ code {
 }
 
 .theme-toggle-btn:hover {
-  color: var(--ocean-primary);
-  background: var(--glass-bg);
-  border-color: var(--border-hover);
-  backdrop-filter: blur(10px);
+  color: white;
+  background: var(--ocean-primary);
+  border-color: var(--ocean-primary);
 }
 
 .search-toggle,
@@ -1490,6 +1467,11 @@ mark {
     box-sizing: border-box;
   }
   
+  /* 移動端主題切換按鈕 */
+  .mobile-theme-toggle {
+    display: block !important;
+  }
+
   /* 移動端導航按鈕 */
   .mobile-menu-trigger {
     display: flex !important;
@@ -1685,6 +1667,34 @@ mark {
     text-align: center;
     width: 100%;
   }
+}
+
+/* Mobile Theme Toggle - Fixed Position */
+.mobile-theme-toggle {
+  display: none;
+  position: fixed;
+  top: 1.5rem;
+  right: 5.5rem;
+  z-index: 1003;
+}
+
+.mobile-theme-toggle .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  color: var(--ocean-primary);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+  box-shadow:
+    0 8px 32px rgba(30, 64, 175, 0.1),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.mobile-theme-toggle .theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--ocean-secondary);
 }
 
 /* Mobile Menu Trigger Button */
