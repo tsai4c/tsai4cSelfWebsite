@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, Search } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -123,6 +124,7 @@ const Navbar: React.FC = () => {
 
             {/* Search and Mobile Menu */}
             <div className="nav-actions">
+              <ThemeToggle />
               <motion.button
                 className="search-button"
                 onClick={() => setShowSearch(!showSearch)}
