@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { Waves, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -46,9 +46,6 @@ const Home: React.FC = () => {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
   
   const smoothY = useSpring(y, { stiffness: 100, damping: 30, restDelta: 0.001 })
-
-  const statsRef = useRef(null)
-  const isInView = useInView(statsRef, { once: true, margin: "-150px" })
 
   return (
     <div className="page home-page" ref={containerRef}>
@@ -156,34 +153,6 @@ const Home: React.FC = () => {
         </motion.div>
       </motion.div>
 
-      <motion.section 
-        ref={statsRef}
-        className="section stats-section"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="container">
-          <div className="stats-grid">
-            {[
-              { number: '3+', label: 'Research Projects' },
-              { number: '1', label: 'Institution' },
-              { number: '∞', label: 'Curiosity' },
-            ].map((stat, index) => (
-              <motion.div 
-                key={index}
-                className="stat-item"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.15, type: "spring" }}
-              >
-                <span className="stat-number">{stat.number}</span>
-                <span className="stat-label">{stat.label}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
     </div>
   )
 }
