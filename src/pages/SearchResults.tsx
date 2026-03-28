@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Search, FileText, User, Beaker, Folder, Mail } from 'lucide-react'
+import { Search, User, Beaker, Folder, Mail } from 'lucide-react'
 
 interface SearchResult {
   title: string;
