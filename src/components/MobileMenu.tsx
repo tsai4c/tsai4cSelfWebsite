@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Search } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 
 const MobileMenu: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -97,6 +98,7 @@ const MobileMenu: React.FC = () => {
             >
               <div className="mobile-menu-header">
                 <div className="mobile-menu-title">Navigation</div>
+                <ThemeToggle />
               </div>
               
               <nav className="mobile-menu-nav">
