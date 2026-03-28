@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, Search } from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -97,23 +98,9 @@ const Navbar: React.FC = () => {
             <ul className="nav-links desktop-nav">
               {navItems.map((item) => (
                 <li key={item.to}>
-                  <NavLink 
-                    to={item.to} 
-                    style={({ isActive }) => isActive ? {
-                      color: 'var(--ocean-primary)',
-                      background: 'rgba(100, 150, 255, 0.15)',
-                      fontWeight: '600',
-                      borderRadius: '20px',
-                      padding: '0.6rem 1.2rem',
-                      boxShadow: 'inset 0 2px 8px rgba(30, 64, 175, 0.2)',
-                      transition: 'all 0.3s ease',
-                      textDecoration: 'none',
-                      display: 'inline-block'
-                    } : {
-                      textDecoration: 'none',
-                      display: 'inline-block'
-                    }}
-                    className="nav-link"
+                  <NavLink
+                    to={item.to}
+                    className={({ isActive }) => `nav-link ${isActive ? 'nav-link-active' : ''}`}
                   >
                     {item.label}
                   </NavLink>
@@ -123,6 +110,7 @@ const Navbar: React.FC = () => {
 
             {/* Search and Mobile Menu */}
             <div className="nav-actions">
+              <ThemeToggle />
               <motion.button
                 className="search-button"
                 onClick={() => setShowSearch(!showSearch)}
